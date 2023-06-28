@@ -1,2 +1,2 @@
 # leetcode
-leetcode_submissions
+My leetcode submissions, created using Leetsync

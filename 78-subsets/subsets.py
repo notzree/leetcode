@@ -17,6 +17,7 @@ class Solution:
         return res
 
         #Me trying the BFS way
+        # # u start with [] -> copy and add [n] --> [],[1],[2],[3] repeat.
         # res = [[]]
         # for n in nums:
         #     for i in range(len(res)):

@@ -10,7 +10,6 @@ class Solution:
         result = []
         p = ''.join(sorted(p)) 
         for i in range(len(s)-len(p)+1):
-            print(i)
             anagram = ''.join(sorted(s[i:i+len(p)]))
             if anagram == p:
                 result.append(i)

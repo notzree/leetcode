@@ -1,12 +1,20 @@
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        nums2 = nums[:] #Make sure to copy it, not reference it
-        for i in range(0,len(nums2)):
-            j = (i+k)% len(nums2)
-            nums[j] = nums2[i]
+        def reverse(array, start, end):
+            while start<=end:
+                array[start], array[end] = array[end], array[start]
+                start+=1
+                end-=1
+            return array
+        k = k%len(nums)
         
+        nums.reverse()
+        reverse(nums,0,k-1)
+        reverse(nums,k, len(nums)-1)
+        return nums
+
+
+        
+
 
         

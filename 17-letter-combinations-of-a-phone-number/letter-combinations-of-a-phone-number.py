@@ -18,12 +18,9 @@ class Solution:
         if len(digits)==1:
             return combination
         for d in digits[1:]:
-            print(d)
             for c in range(len(combination)):
                 curr = combination.pop(0)
-                print(curr)
                 for letter in digitToChar[d]:
-                    print(curr+letter)
                     combination.append(curr+letter)
         return combination
             

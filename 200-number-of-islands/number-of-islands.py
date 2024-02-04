@@ -5,27 +5,23 @@ class Solution:
         rows, cols = len(grid), len(grid[0])
         visited = set() #Or can use 2d grid
         islands = 0
+        directions = [[1,0], [-1,0], [0,1], [0,-1]]
 
-        def bfs(r,c):
-            #BFS is an iterative algo
-            q = collections.deque()
+        def dfs(r,c):
+            if r not in range(rows) or c not in range(cols) or (r,c) in visited or grid[r][c]=="0":
+                return
             visited.add((r,c))
-            q.append((r,c))
-            while q:
-                row, col = q.popleft()
-                #check adj positions for position we just popped
-                directions = [[1,0], [-1,0],[0,1], [0,-1]]
-                for dr, dc in directions:
-                    moved_row, moved_col = row+dr, col+dc
-                    if (moved_row) in range(rows) and (moved_col) in range(cols) and grid[moved_row][moved_col]=="1" and (moved_row,moved_col) not in visited:
-                        q.append((moved_row,moved_col))
-                        visited.add((moved_row,moved_col))
+            for (row_inc,c_inc) in directions:
+                moved_row,moved_col = r+row_inc, c+c_inc
+                dfs(moved_row,moved_col)
 
+            
+        
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1" and (r,c) not in visited:
                     #Traverse and mark it visited
-                    bfs(r,c)
+                    dfs(r,c)
                     islands+=1
         return islands
 

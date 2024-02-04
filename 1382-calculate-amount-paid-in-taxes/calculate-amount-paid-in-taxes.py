@@ -6,7 +6,6 @@ class Solution:
         tax = (brackets[0][0]*brackets[0][1]/100)
         income = income - brackets[0][0]
         for i in range(1,len(brackets)):
-            print(income)
             dollars = brackets[i][0] -brackets[i-1][0]
             rate = brackets[i][1]
             if income - dollars >=0:

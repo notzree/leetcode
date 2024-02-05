@@ -4,7 +4,6 @@ class Solution:
 
         def dfs(i): #position that we are at
             if i in dp: #Either last position or alr cached
-                print(dp)
                 return dp[i]
             if s[i]=="0":
                 return 0
@@ -13,7 +12,6 @@ class Solution:
             if i+1 < len(s) and (s[i] == "1" or (s[i] == "2" and int(s[i+1])<=6)):
                 res+= dfs(i+2)
             dp[i] = res
-            print(dp)
             return res
         return dfs(0)
         

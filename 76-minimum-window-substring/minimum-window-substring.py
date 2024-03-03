@@ -11,7 +11,7 @@ class Solution:
         for (i,c) in enumerate(s):
             if c in hmap:
                 hmap[c] = hmap[c]-1
-                if hmap[c] >=0:
+                if hmap[c] >=0: #greater equal to zero
                     t_length -=1
             while t_length ==0:
                 if i-left+1 < max_length:

@@ -1,12 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagrams = {}
+        if len(strs) ==0:
+            return [[""]]
+        result = {}
         for s in strs:
-            sort = ''.join(sorted(s))
-            if sort in anagrams:
-                anagrams[sort].append(s)
+            sorted_string = ''.join(sorted(s))
+            if sorted_string in result:
+                result[sorted_string].append(s)
             else:
-                anagrams[sort] = [s]
-        return list(anagrams.values())
+                result[sorted_string]=[s]
+        return list(result.values())
+
 
 

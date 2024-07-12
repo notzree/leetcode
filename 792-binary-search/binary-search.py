@@ -5,7 +5,7 @@ class Solution:
             mid = (low+high)//2
             if nums[mid] == target:
                 return mid
-            if nums[mid] <=target:
+            if nums[mid] <target:
                 return bs(nums,mid+1,high)
             else:
                 return bs(nums, low, mid)

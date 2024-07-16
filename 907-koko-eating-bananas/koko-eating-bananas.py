@@ -1,24 +1,27 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        def eat(speed: int) -> bool:
-            hours = 0
-            for p in piles:
-                hours += -(-p//speed)
-            return hours <= h
-        min_eating_speed = 1
-        # her maximum eating speed is the max num of banans
-        max_eating_speed = max(piles)
-        result = max_eating_speed
-        while min_eating_speed <max_eating_speed:
-            current_speed = (min_eating_speed+max_eating_speed)//2
-            if eat(current_speed):
-                result = min(result, current_speed)
-                #current speed is less than or equal to given speed
-                #Can go slower
-                max_eating_speed = current_speed
+        def eat(k: int)-> int:
+            res = 0
+            for b in piles:
+                res += math.ceil(b/k)
+            return res
+        low, high = 1, max(piles)
+        res = high
+        while low<=high:
+            mid = (low+high)//2
+            time_taken = eat(mid)
+            if time_taken <= h:
+                res = min(res, mid)
+                #Finished in time. Try eating slower!
+                high = mid-1
             else:
-                min_eating_speed = current_speed+1
-        return result
+                #DNF, eat faster!
+                low = mid+1
+        return res
+
+            
+
+        
 
 
 

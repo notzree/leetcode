@@ -7,16 +7,17 @@ class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
             return None
+        current = head
+        prev = None
+        while current:
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
+        return prev
+        
 
-        currNode = head
-        prevNode = None
 
-        while currNode:
-            nextNode = currNode.next
-            currNode.next = prevNode #reverse pointer
-            prevNode = currNode
-            currNode = nextNode
-        return prevNode
 
         
 

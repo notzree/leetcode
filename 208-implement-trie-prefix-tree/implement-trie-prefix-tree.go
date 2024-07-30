@@ -6,7 +6,6 @@ type Trie struct {
 func Constructor() Trie {
     return Trie{
         root: &Node{
-            Char: '_',
             isWord: false,
             children: [26]*Node{},
         },
@@ -21,7 +20,6 @@ func (this *Trie) Insert(word string)  {
         char_as_val := getIndex(char)
         if itr.children[char_as_val] == nil { //insert newNode
             newNode := &Node{
-                Char: char,
                 isWord: (index==wordLength-1),
                 children: [26]*Node{},
             }
@@ -61,7 +59,6 @@ func (this *Trie) StartsWith(prefix string) bool {
 }
 
 type Node struct {
-    Char rune
     isWord bool
     children [26] *Node
 }

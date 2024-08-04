@@ -1,20 +1,27 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
-        def dfs(combination,i, current_sum):
-            if current_sum ==target:
-                res.append(combination[:])
+        # Basically, for each candidate, you can either choose to take or skip.
+        # We simply do this
+        result = []
+        def dfs(combination: List[int], index: int, s: int):
+            if s == target:
+                result.append(combination[:])
                 return
-            if current_sum > target or i>= len(candidates):
+            if index >=len(candidates) or s >target:
                 return
+            # Take, this recursive branch represents all the combinations comtaining candidates[index]
+            combination.append(candidates[index])
+            dfs(combination, index, s+candidates[index]) # Index is the same becuase you can take again
             
-            combination.append(candidates[i])
-            dfs(combination,i,current_sum+candidates[i])
+            # skip
             combination.pop()
-            dfs(combination, i+1, current_sum)
+            dfs(combination, index+1,s)
+            return
+        dfs([],0, 0)
+        return result
 
-        dfs([],0,0)
-        return res
+
+        
             
 
 
